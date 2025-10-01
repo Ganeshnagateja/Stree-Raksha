@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='self.css') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            background-color: #f0f0f0; /* Optional: light background color */
+        }
+        .header {
+            text-align: center;
+        }
+        .video-container {
+            display: flex; /* Use flexbox for horizontal alignment */
+            justify-content: center; /* Center the videos */
+            margin-bottom: 20px; /* Space below the video container */
+        }
+        .video-container iframe {
+            margin: 0 10px; /* Add space between videos */
+            border-radius: 8px; /* Rounded corners for videos */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            transition: transform 0.3s; /* Smooth transition for hover effect */
+        }
+        .video-container iframe:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align elements */
+            margin-top: 20px; /* Optional: space above the input area */
+            padding-top: 20px; /* Adjust padding to create space for videos */
+        }
+        #answerContainer {
+            margin-bottom: 10px; /* Space between answer and input */
+            font-size: 30px;
+            color: rgb(183, 36, 36); /* Color for the answer container text */
+            display: inline-block; /* Allow background color to wrap around the text */
+            background-color: white; /* Default background color */
+            padding: 0px; /* Padding around the answer */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for answer container */
+        }
+        #answerContainer p {
+            margin: 0; /* Remove default margin from paragraph */
+            color: black; /* Set answer text color to black */
+        }
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column; /* Stack videos on smaller screens */
+            }
+            .video-container iframe {
+                width: 100%; /* Full width on small screens */
+                height: auto; /* Adjust height automatically */
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <img src="{{ url_for('static', filename='newlogo1.png') }}" alt="Logo" height="50" width="50">
+            <p style="color: white; padding: 45px 10px; font-family: Arial, Helvetica, sans-serif;">STREE RAKSHA<br>Developed By Ganesh</p>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/self">SELF-SERVICE</a></li>
+                    <li><a href="/track">TRACKING</a></li>
+                    <li><a href="/table">HELP-LINE</a></li>
+                </ul>
+            </div>
+        </nav>
+        <center>
+            <div class="video-container">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/T7aNSRoDCmg" frameborder="0" allowfullscreen></iframe>
+                <!-- Add another iframe for a second video if needed -->
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/9m-x64bKfR4" frameborder="0" allowfullscreen></iframe>
+                <!--<video src="{{ url_for('static', filename='sai.mp4') }}" width="300" height="200" controls></video>-->
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/B725c7vi1xk" frameborder="0" allowfullscreen></iframe> 
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/r0I5TQWPFvM" frameborder="0" allowfullscreen></iframe>            
+            </div>
+            <div class="input-container">
+                <div id="answerContainer"></div> <!-- Answer will be displayed here -->
+                <input type="text" placeholder="How can I help you...?" id="questionInput" list="suggestions">
+                <datalist id="suggestions">
+                    {% for question in questions %}
+                        <option value="{{ question }}">
+                    {% endfor %}
+                </datalist>
+                <button id="submitBtn" class="search" style="width: 8%; height: 50px; border-radius: 20px; margin-top: 10px;">Submit</button>
+            </div>
+        </center>
+    </section>
+
+    <script>
+        async function getAnswer() {
+            const inputField = document.getElementById('questionInput');
+            const question = inputField.value.trim();
+
+            if (!question) {
+                alert("Please enter a question.");
+                return;
+            }
+
+            const response = await fetch('/get_answer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question })
+            });
+
+            if (!response.ok) {
+                alert("Error fetching answer. Please try again.");
+                return;
+            }
+
+            const data = await response.json();
+            displayAnswer(data.answer);
+            inputField.value = ''; // Clear input field after submission
+        }
+
+        function displayAnswer(answer) {
+            const answerContainer = document.getElementById('answerContainer');
+            answerContainer.innerHTML = ''; // Clear previous answer
+
+            const answerElement = document.createElement('p');
+            answerElement.innerText = answer;
+
+            answerContainer.appendChild(answerElement);
+
+            // Set styles to the container
+            answerContainer.style.display = 'inline-block'; // Keep inline-block for wrapping
+        }
+
+        document.getElementById('questionInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                getAnswer();
+            }
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', getAnswer);
+    </script>
+</body>
+</html>

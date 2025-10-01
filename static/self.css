@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    text-align: center;
+    justify-content: center;
+    height: 3em;
+    width: 20em;
+    border-radius: 40px;
+    border: 2px solid #4caf50; /* Green border */
+    background-color: #ffffff; /* White background */
+    font-size: 1.5em; /* Increased font size */
+    padding: 10px; /* Added padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+input:focus {
+    outline: none; /* Remove default outline */
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Blue shadow on focus */
+}
+input:hover {
+    border-color: #008CBA; /* Change border color on hover */
+    box-shadow: 0 4px 12px rgba(0, 140, 186, 0.3); /* Slightly deeper shadow on hover */
+    width: 30em;
+}
+
+.text-box h1 {
+    font-size: 60px;
+}
+
+.header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('help.png');
+    min-height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    padding: 2% 6%;
+}
+
+nav img {
+    width: 100px;
+    height: 100px;
+}
+
+.img {
+    padding-left: 10px;
+    transition: transform 0.3s ease; /* Smooth transition for transform */
+}
+
+.img:hover {
+    transform: scale(1.1); /* Scale the image to 110% on hover */
+}
+
+b {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+}
+
+.me {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    background-color: white;
+    width: 50%; /* Initial width */
+    border-radius: 10px;
+    transition: width 0.5s ease; /* Smooth transition for width */
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.search:hover {
+    background-color: rgba(77, 221, 221);
+    width: 30em;
+}
+
+.me:hover {
+    width: 70%; /* Adjust the width on hover */
+}
+
+.I {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.nav-links {
+    flex: 10;
+    text-align: right;
+}
+
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a {
+    color: #fffdfd;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.nav-links ul li::after {
+    content: '';
+    width: 0%;
+    height: 5px;
+    background: rgb(253, 250, 250);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+    background-color: white;
+}
+
+.text-box {
+    width: 100%;
+    color: #171616;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box p {
+    margin: 10px 0px 40px;
+    font-size: 20px;
+    color: #0d0b0b;
+}
+
+@media(max-width: 700px) {
+    .text-box h1 {
+        font-size: 20px;
+    }
+    
+    .nav-links {
+        position: absolute;
+        background-color: #f44336;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: 0;
+        text-align: left;
+        z-index: 2;
+    }
+}

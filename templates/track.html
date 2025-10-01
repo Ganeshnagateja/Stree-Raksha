@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='track.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='w.css') }}">
+</head>
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='newlogo1.png') }}" alt="Logo" height="50" width="50">
+        <p style="color:white; padding: 45px 10px; font-family: Arial, Helvetica, sans-serif;">STREE RAKSHA<br>Developed By Ganesh</p>
+       <div class="nav-links">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/self">SELF-SERVICE</a></li>
+                <li><a href="/track">TRACKING</a></li>
+                <li><a href="/table">HELP-LINE</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header class="container">
+        <h2 style="color: white;padding-bottom: 2em;">TRACK YOUR ADDRESS</h1>
+        <form id="trackingForm">
+            <label for="username">USER NAME:</label>
+            <input type="text" id="username" placeholder="Enter name" required>
+
+            <label for="start-location">START LOCATION:</label>
+            <input type="text" id="start-location" placeholder="Enter start location" required>
+
+            <label for="end-location">END LOCATION:</label>
+            <input type="text" id="end-location" placeholder="Enter end location" required>
+
+            <label for="emergency-phone1">EMERGENCY PH-NO1:</label>
+            <input type="tel" id="emergency-phone1" placeholder="Enter phone number 1" pattern="[0-9]{10}" required>
+
+            <label for="emergency-phone2">EMERGENCY PH-NO2:</label>
+            <input type="tel" id="emergency-phone2" placeholder="Enter phone number 2" pattern="[0-9]{10}" required>
+
+            <center>
+                <button type="submit" id="show">START TRACKING</button>
+                <button type="button" id="showTrackingButton" style="display:none;padding-top: 10px;">SHOW TRACKING</button>
+            </center>
+        </form>
+    </header>
+
+    <script>
+        document.getElementById('trackingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Extract the start and end locations
+            const startLocation = document.getElementById('start-location').value;
+            const endLocation = document.getElementById('end-location').value;
+
+            // Show the "Show Tracking" button
+            document.getElementById('showTrackingButton').style.display = 'inline';
+            document.getElementById('show').style.display='none';
+
+            // Optionally store the locations in sessionStorage or pass them in a way for the next function
+            sessionStorage.setItem('startLocation', startLocation);
+            sessionStorage.setItem('endLocation', endLocation);
+        });
+
+        document.getElementById('showTrackingButton').addEventListener('click', function() {
+            const startLocation = sessionStorage.getItem('startLocation');
+            const endLocation = sessionStorage.getItem('endLocation');
+
+            // Navigate to Google Maps
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(startLocation)}&destination=${encodeURIComponent(endLocation)}&travelmode=driving`;
+            window.open(mapsUrl, '_blank');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Safety</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='w.css') }}">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <img src="{{ url_for('static', filename='newlogo1.png') }}" alt="Logo" height="50" width="50">
+            <p style="color:white; padding: 45px 10px; font-family: Arial, Helvetica, sans-serif;">STREE RAKSHA<br>Developed By Ganesh</p>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/self">SELF-SERVICE</a></li>
+                    <li><a href="/track">TRACKING</a></li>
+                    <li><a href="/table">HELP-LINE</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <center>
+            <div class="me">
+                <img src="{{ url_for('static', filename='womensafety.jpg') }}" alt="Women's Safety" height="200" width="200" class="img">
+                <p class="I"><strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;">Women's safety</strong> is paramount and begins with empowerment through education, enabling individuals to recognize their rights and learn self-defense. Awareness of surroundings and utilizing technology, such as safety apps, enhances personal security and provides quick access to help. Community support and advocacy for stronger protective laws are essential in fostering a safer environment for all women.</p>
+            </div>
+            <div class="me">
+                <img src="{{ url_for('static', filename='help.png') }}" alt="Self-Service" height="200" width="200" class="img1">
+                <p class="I"><strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;">Self-service</strong> session is used to help the user chat with the virtual assistant to clear their doubts by simply giving corresponding queries.</p>
+            </div>
+            <div class="me">
+                <img src="{{ url_for('static', filename='address.png') }}" alt="Tracking" height="200" width="200" class="img">
+                <p class="I"><strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;">Tracking session</strong> helps the user track their address using the contact number provided by simply clicking the show tracking button.</p>
+            </div>
+            <div class="me">
+                <img src="{{ url_for('static', filename='phone.jpg') }}" alt="Help-Line" height="200" width="200" class="img1">
+                <p class="I"><strong style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Help-line session</strong> is designed to inform the user about helpline numbers for their specific state, making it easier for them to contact support.</p>
+            </div>
+        </center>
+    </section>
+</body>
+</html>

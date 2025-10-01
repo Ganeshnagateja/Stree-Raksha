@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='w.css') }}">
+    <title>Help Line</title>
+    <style>
+        /* Optional: Style for the search input */
+        .hi {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='newlogo1.png') }}" alt="Logo" height="50" width="50">
+        <p style="color:white; padding: 45px 10px; font-family: Arial, Helvetica, sans-serif;">STREE RAKSHA<br>Developed By Ganesh</p>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/self">SELF-SERVICE</a></li>
+                <li><a href="/track">TRACKING</a></li>
+                <li><a href="/table">HELP-LINE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hi">
+        <center>
+            <input type="text" id="searchInput" placeholder="Search for a state..." aria-label="Search help lines">
+            <button id="searchButton" class="search"style="width:80px;height: 60px;border-radius: 18px;">Search</button>
+        </center>
+    </div>
+
+    <div>
+        <center>
+            <table id="helplineTable">
+                <thead>
+                    <tr style="background-color: #f2f2f2;">
+                        <th width="80">STATE</th>
+                        <th width="100">HELPLINE NO.</th>
+                        <th width="100">VEHICLE HELPLINE NO.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ANDHRA PRADESH</td>
+                        <td>Protection cell: <a href="tel:04023320539">040-23320539</a><br>Women Commission: <a href="tel:08632329090">0863-2329090</a></td>
+                        <td><a href="tel:9781101091">9781101091</a></td>
+                    </tr>
+                    <tr>
+                        <td>TELANGANA</td>
+                        <td>Women police station: <a href="tel:04027852400">040-27852400</a></td>
+                        <td><a href="tel:03602290544">0360-2290544</a></td>
+                    </tr>
+                    <tr>
+                        <td>TAMIL NADU</td>
+                        <td>Women police station: <a href="tel:04423452365">044-23452365</a></td>
+                        <td><a href="tel:04423452365">044-23452365</a></td>
+                    </tr>
+                    <tr>
+                        <td>UTTARAKHAND</td>
+                        <td>Women's helpline: <a href="tel:1090">1090</a></td>
+                        <td><a href="tel:03602290544">0360-2290544</a></td>
+                    </tr>
+                    <tr>
+                        <td>UTTAR PRADESH</td>
+                        <td>Women's helpline: <a href="tel:05222306403">0522-2306403</a></td>
+                        <td><a href="tel:04023320539">040-23320539</a></td>
+                    </tr>
+                    <tr>
+                        <td>ARUNACHAL PRADESH</td>
+                        <td>Women's commission: <a href="tel:03602290544">0360-2290544</a></td>
+                        <td><a href="tel:04423452365">044-23452365</a></td>
+                    </tr>
+                    <tr>
+                        <td>ASSAM</td>
+                        <td>Women's helpline: <a href="tel:1090">1090</a></td>
+                        <td><a href="tel:03602290544">0360-2290544</a></td>
+                    </tr>
+                    <tr>
+                        <td>BIHAR</td>
+                        <td>Women's helpline: <a href="tel:18003456247">18003456247</a></td>
+                        <td><a href="tel:04023320539">040-23320539</a></td>
+                    </tr>
+                    <tr>
+                        <td>CHANDIGARH</td>
+                        <td>Women's helpline: <a href="tel:01722741900">0172-2741900</a></td>
+                        <td><a href="tel:03602290544">0360-2290544</a></td>
+                    </tr>
+                    <tr>
+                        <td>GOA</td>
+                        <td>Women's helpline: <a href="tel:1091">1091</a></td>
+                        <td><a href="tel:04423452365">044-23452365</a></td>
+                    </tr>
+                    <tr>
+                        <td>GUJARAT</td>
+                        <td>Women's commission: <a href="tel:18002331111">18002331111</a></td>
+                        <td><a href="tel:03602290544">0360-2290544</a></td>
+                    </tr>
+                    <tr>
+                        <td>HARYANA</td>
+                        <td>Women's helpline: <a href="tel:01242335100">0124-2335100</a></td>
+                        <td><a href="tel:04023320539">040-23320539</a></td>
+                    </tr>
+                    <tr>
+                        <td>MAHARASHTRA</td>
+                        <td>Women's helpline: <a href="tel:02226111103">022-26111103</a></td>
+                        <td><a href="tel:03602290544">0360-2290544</a></td>
+                    </tr>
+                    <tr>
+                        <td>PUNJAB</td>
+                        <td>Women's helpline: <a href="tel:9781101091">9781101091</a></td>
+                        <td><a href="tel:04423452365">044-23452365</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#helplineTable tbody tr');
+            let found = false;
+
+            rows.forEach(row => {
+                const state = row.cells[0].textContent.toLowerCase();
+                if (state.includes(input)) {
+                    row.scrollIntoView({ behavior: 'smooth' }); // Scroll to the matching row
+                    row.style.backgroundColor = '#d1e7dd'; // Highlight the row
+                    found = true;
+                } else {
+                    row.style.backgroundColor = ''; // Reset other rows
+                }
+            });
+
+            if (!found) {
+                alert('State not found!');
+            }
+        });
+    </script>
+</body>
+</html>

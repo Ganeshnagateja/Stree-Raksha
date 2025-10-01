@@ -1,0 +1,103 @@
+body {
+  background-image: linear-gradient(rgba(4, 9, 30, 0.4), rgba(4, 9, 30, 0.4)), url(address.png);
+  background-size: cover;
+}
+
+/* Container styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  flex-direction: column;
+}
+
+/* Navigation styles */
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav div ul li {
+  padding: 10px 0;
+}
+
+nav a {
+  top: 0;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Initial width */
+  opacity: 0; /* Start hidden for fade-in */
+  animation: fadeIn 0.6s forwards; /* Fade-in animation */
+  transition: width 0.3s ease, border-radius 0.3s ease;
+}
+
+/* Ensure the form doesn't get hidden when hovered */
+form:hover {
+  width: 320px; /* Adjusted width to prevent disappearing */
+  border-radius: 10px; /* Slight increase in border radius */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px); /* Move up slightly */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0); /* Move back to original position */
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: large;
+  background-color: rgb(238, 237, 237);
+  width: 100%; /* Full width to align with inputs */
+}
+
+input {
+  width: 75%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: transform 0.2s ease; /* Transition for focus effect */
+}
+
+input:focus {
+  transform: scale(1.02); /* Slightly enlarge on focus */
+  border-color: #007bff; /* Change border color on focus */
+}
+
+button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Header styles */
+header h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px; /* Adjusted font size for better visibility */
+}

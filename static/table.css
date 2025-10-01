@@ -1,0 +1,120 @@
+body {
+    background-image: linear-gradient(rgba(54, 54, 55, 0.7), rgba(65, 65, 66, 0.7)), url(phone.jpg);
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 200px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+    margin: 20px auto; /* Center the table */
+    background-color: #fff; /* White background for better contrast */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensures rounded corners are visible */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    animation: fadeIn 1s; /* Fade-in effect */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+th, td {
+    border: 1px solid #ddd; /* Light gray borders */
+    padding: 15px; /* Increased padding for better spacing */
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth background color change and transform */
+}
+
+th {
+    background-color: #5697f1; /* Header background color */
+    color: white; /* White text for contrast */
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: bold; /* Bold header text */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+tr:hover {
+    background-color: rgba(241, 204, 22, 0.5); /* Enhanced hover effect */
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+tr td a {
+    color: #c29c06; /* Link color */
+    transition: color 0.3s;
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold; /* Bold link text */
+}
+
+tr td a:hover {
+    color: #8c1010; /* Hover effect on links */
+}
+
+.hi {
+    margin: 20px auto;
+    text-align: center; /* Center the search input */
+    position: relative; /* Position relative to allow absolute positioning of the icon */
+}
+
+input[type="text"] {
+    padding: 10px 40px; /* Padding for icon */
+    border: 2px solid #5697f1; /* Add border for the input */
+    border-radius: 18px; /* Rounded corners */
+    width: 60%;
+    transition: box-shadow 0.3s, border-color 0.3s; /* Transition for border color */
+    background-color: #f9f9f9; /* Light background for input */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    font-size: 16px; /* Larger font size for better readability */
+    height:40px;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); /* Focus effect */
+    outline: none; /* Remove default outline */
+    border-color: #007bff; /* Change border color on focus */
+}
+
+/* Add a search icon */
+.hi::before {
+    content: '';
+    position:absolute;
+    left: 215px; /* Position it inside the input */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    width: 38px; /* Width of the icon */
+    height: 40px; /* Height of the icon */
+    /* padding-left:100px; */
+    background-image: url('search.jpg'); /* Path to your search icon image */
+    background-size: contain; /* Ensure the icon fits within the dimensions */
+    background-repeat: no-repeat; /* Prevent repeat of the icon */
+    pointer-events: none; /* Prevent interaction with the icon */
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 90%; /* Responsive table */
+    }
+
+    th, td {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    input[type="text"] {
+        width: 80%; /* Make input wider on smaller screens */
+        font-size: 14px; /* Smaller font size for smaller screens */
+    }
+}
+.search:hover{
+    background-color: rgba(255, 204, 0, 0.5);
+    width:100px;
+}
